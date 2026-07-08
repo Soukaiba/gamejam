@@ -1,0 +1,43 @@
+export const GAME_CONFIG = {
+  camera: {
+    fov: 68,
+    near: 0.1,
+    far: 220,
+    standingEyeHeight: 1.68,
+    crouchingEyeHeight: 1.08,
+    mouseSensitivity: 0.0018,
+  },
+  movement: {
+    walkSpeed: 4.6,
+    sprintSpeed: 7.2,
+    crouchSpeed: 2.6,
+    acceleration: 13,
+    airAcceleration: 5.5,
+    damping: 10,
+    jumpSpeed: 5.2,
+    gravity: 14.5,
+    radius: 0.4,
+    bobFrequency: 8.4,
+    bobAmplitude: 0.035,
+  },
+  world: {
+    startPosition: { x: 0, y: 0, z: 22 },
+    gateLineZ: 8.4,
+    ticketPosition: { x: 0, y: 0.38, z: 15.8 },
+    serviceDoorPosition: { x: -8.9, y: 1.15, z: 13.3 },
+    playableBounds: { minX: -23.6, maxX: 23.6, minZ: -27.6, maxZ: 27.6 },
+  },
+  timing: {
+    openingQuoteDuration: 3.8,
+    openingFadeDuration: 1.6,
+    awakeningDuration: 5.7,
+    ticketFoldDuration: 1.35,
+    gateCloseDuration: 2.5,
+  },
+  colors: {
+    fog: 0x08111b,
+    moon: 0xa6c8ff,
+    warmLight: 0xffcf81,
+    ticket: 0xbef4ff,
+  },
+};

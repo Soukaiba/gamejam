@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Circus Remembers</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js"
+      }
+    }
+  </script>
+  <script>
+    window.addEventListener('load', () => window.focus());
+    window.addEventListener('click', () => window.focus());
+  </script>
+</head>
+<body>
+  <div id="app">
+    <div id="game-shell">
+      <canvas id="game-canvas" aria-label="The Circus Remembers 3D view"></canvas>
+
+      <div id="opening-quote" class="overlay visible">
+        <p>Every illusion hides a truth.</p>
+      </div>
+
+      <div id="start-screen" class="panel hidden">
+        <h1>The Circus Remembers</h1>
+        <button id="start-button" type="button">Play</button>
+      </div>
+
+      <div id="pointer-hint" class="panel subtle hidden">
+        Click the scene to look around.
+      </div>
+
+      <div id="interact-prompt" class="hidden"></div>
+      <div id="inspect-prompt" class="hidden"></div>
+      <button id="inspect-close" class="inspect-close exit-button hidden" type="button" aria-label="Exit held object">
+        <span class="key-chip">Esc</span><span>Exit</span>
+      </button>
+      <div id="inventory-hint" class="hidden">Press B to open Inventory</div>
+
+      <div id="inventory-panel" class="hidden" aria-live="polite">
+        <div class="inventory-header">
+          <p class="eyebrow">Inventory</p>
+          <button id="inventory-close" class="exit-button" type="button" aria-label="Exit inventory">
+            <span class="key-chip">Esc</span><span>Exit</span>
+          </button>
+        </div>
+        <div id="inventory-list"></div>
+      </div>
+
+      <div id="status-bar" class="hidden">
+        <p class="eyebrow">Objective</p>
+        <p id="objective-text">Find the glowing ticket.</p>
+      </div>
+
+      <div id="controls-hint" class="hidden" aria-hidden="true">
+        <div class="key-row"><span class="key-chip">W A S D</span><span>Move</span></div>
+        <div class="key-row"><span class="key-chip">Shift</span><span>Sprint</span></div>
+        <div class="key-row"><span class="key-chip">Ctrl</span><span>Crouch</span></div>
+        <div class="key-row"><span class="key-chip">E / LMB</span><span>Interact</span></div>
+        <div class="key-row"><span class="key-chip">B</span><span>Inventory</span></div>
+        <div class="key-row"><span class="key-chip">Esc</span><span>Pause / Close</span></div>
+      </div>
+
+      <div id="audio-state" class="hidden">Audio: On</div>
+
+      <div id="vignette" aria-hidden="true"></div>
+
+      <button id="settings-button" class="icon-button hidden" type="button" aria-label="Open settings">⚙</button>
+
+      <div id="settings-panel" class="panel hidden" aria-live="polite">
+        <div class="inventory-header">
+          <p class="eyebrow">Paused</p>
+          <button id="settings-close" class="exit-button" type="button" aria-label="Exit settings">
+            <span class="key-chip">Esc</span><span>Exit</span>
+          </button>
+        </div>
+
+        <label class="settings-row">
+          <span>Mouse sensitivity</span>
+          <input id="setting-sensitivity" type="range" min="0.4" max="2.2" step="0.05" />
+        </label>
+
+        <label class="settings-row">
+          <span>Volume</span>
+          <input id="setting-volume" type="range" min="0" max="1" step="0.05" />
+        </label>
+
+        <label class="settings-row">
+          <span>Field of view</span>
+          <input id="setting-fov" type="range" min="60" max="90" step="1" />
+        </label>
+
+        <label class="settings-row settings-row--checkbox">
+          <span>Invert look Y-axis</span>
+          <input id="setting-invert-y" type="checkbox" />
+        </label>
+
+        <button id="settings-resume" type="button">Resume</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
