@@ -44,6 +44,8 @@ mirrors, illusions, memories, or story cutscenes).
   disappear instead of returning to the ground.
 - Fixed the gate containment so crossing into the circus seals the exit immediately, and added a
   final playable-bounds clamp so sprint/jump edge cases cannot push the player outside the map.
+- Fixed the gate entry blocker: once the seal starts, the doorway collider stays inactive so the
+  player can continue into the circus while the one-way exit barrier blocks backing out.
 - Rebuilt Phase 1 around a full first-person controller with visible hands, walking, sprinting,
   crouching, jumping, camera bob, and smoother movement.
 - Replaced the old intro flow with a black-screen quote, fade-in, minimal title screen, reusable
@@ -96,6 +98,9 @@ mirrors, illusions, memories, or story cutscenes).
   or `LMB`, then confirmed into inventory from the held-object view to start visible bulb wake-up.
   The gate seal now triggers as soon as the player crosses the gate line, and movement has a final
   playable-bounds clamp so the player cannot be pushed outside the map.
+- **Gate seal blocked entry.** The closing gate collider was reactivating while the player was in
+  the doorway, pushing them back outside. The sealed state now leaves the doorway collider off and
+  uses the separate exit barrier to prevent leaving again.
 - **Re-inspecting the stored ticket crashed the game.** The inventory preview is a scene-detached
   clone (`ticketTemplate.clone()`), so it has no real parent. Confirming or closing that inspection
   called `InspectionSystem.restore()`, which does `originalParent.attach(object)` — with

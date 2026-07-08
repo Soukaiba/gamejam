@@ -686,11 +686,12 @@ export class CircusEnvironment {
   setGateOpenProgress(progress) {
     this.gateOpenProgress = progress;
     const openEnough = progress >= 0.74 && !this.gateSealed;
-    this.gateBarrier.active = !openEnough;
+    this.gateBarrier.active = !openEnough && !this.gateSealed;
   }
 
   sealExit() {
     this.gateSealed = true;
+    this.gateBarrier.active = false;
     this.exitBarrier.active = true;
   }
 
